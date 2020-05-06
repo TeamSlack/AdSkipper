@@ -1,0 +1,5 @@
+Release notes:
+5/6/2020 - v1.0
+-Implemented automated "Skip Ads" image locator & clicker
+-Implemented python package installer batch file for better distribution
+

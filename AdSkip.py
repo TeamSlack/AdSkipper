@@ -3,7 +3,9 @@ import cv2
 import time
 import subprocess
 import sys
+import os
 
+ApVer = "1.0"
 try:
     with open("state.txt","r") as inStat:
         appStat = inStat.read()
@@ -11,15 +13,22 @@ try:
         if appStat[8] == "0":
             try:
                 subprocess.check_call("setup.bat")
-                print("Setup complete")
+                print("Setup complete!\n")
+                time.sleep(1)
+                os.system('cls')
                 with open("state.txt","w+") as outStat:
                     outStat.write("install=1")
                     inStat.close()
-            except CalledProcessError:
+            except:
                 print("Failed to run bat file")
+                print("Try opening again.")
+                time.sleep(1)
+                exit()
         else:
             print("Already setup")
+    print("App version: " + ApVer)
     print("App started, will automatically look for \"Skip Ads\" button ")
+    print("Press Ctrl+C to quit")
     while True:
         y = pag.locateOnScreen("Untitled_1.png",confidence=0.95)
         print(y)
